@@ -22,6 +22,13 @@ function LunchCheckController($scope) {
   	}
 
 	var menus = $scope.lunch_menu.split(',');
+	var len = menus.length;
+	var i = 0;
+	for(i = 0; i < len; i++ ){
+    	menus[i] && menus[i].trim() && menus.push(menus[i]);  // copy non-empty values to the end of the array
+	}
+
+	menus.splice(0 , len); 
 	$scope.message = {"color":"green"};
   	if(menus.length <= 3)
   	{

@@ -37,7 +37,6 @@ angular.module('Check Off', [])
 
 ToBuyListController.$inject = ['ListCheckOffService'];
 
-ShoppingListController.$inject = ['$scope'];
 
 function ToBuyListController(ListCheckOffService) {
       var buyList = this;

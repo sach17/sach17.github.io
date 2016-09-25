@@ -31,41 +31,74 @@ var buyList = [
 ];
 
 angular.module('Check Off', [])
-.controller('ShoppingListController', ShoppingListController);
+.controller('ToBuyListController', ToBuyListController)
+.controller('AlreadyBoughtListController', AlreadyBoughtListController)  
+.service('ListCheckOffService', ListCheckOffService);
+
+ToBuyListController.$inject = ['ListCheckOffService'];
 
 ShoppingListController.$inject = ['$scope'];
-function ShoppingListController($scope) {
-  $scope.buyList = buyList;
-  $scope.boughtList = [];
-  $scope.boughterrorMessage=true;
-  $scope.buyerrorMessage=false;
 
-  $scope.addToBoughtList = function ($quantity, $name) {
-
-    var newItem = {
-      name: $quantity,
-      quantity: $name
-    };
-
-    $scope.boughtList.push(newItem);
-  };
-
-  $scope.removeItem = function ($index) {
-    console.log($scope.buyList.length);
-    //console.log($scope.buyList[1].name);
-    
-    $scope.boughterrorMessage=false;
-
-    if($scope.buyList.length==1)
-    {
-      $scope.buyerrorMessage=true;
-    }
-
-    $scope.addToBoughtList($scope.buyList[$index].quantity, $scope.buyList[$index].name);
-    $scope.buyList.splice($index, 1);
-    
-
-  };
+function ToBuyListController(ListCheckOffService) {
+      var buyList = this;
+      buyList.buyItem = function($index) {
+          ListCheckOffService.buyItem($index);
+      }
+      buyList.items = ListCheckOffService.getAvailableItems();
 }
+
+AlreadyBoughtListController.$inject = ['ListCheckOffService'];
+
+function AlreadyBoughtListController(ListCheckOffService) {
+      var boughtList = this;
+      boughtList.items = ListCheckOffService.getBoughtItems();
+}
+
+function ListCheckOffService() {
+      var service = this;
+      var buyList = [
+
+                      {
+                        name: "Cups",
+                        quantity: "3"
+                      },
+                      {
+                        name: "Donuts",
+                        quantity: "5"
+                      },
+                      {
+                        name: "Cookies",
+                        quantity: "4"
+                      },
+                      {
+                        name: "Chocolates",
+                        quantity: "1"
+                      },
+                      {
+                        name: "Pepto Bismol",
+                        quantity: "6"
+                      },
+                      {
+                        name: "Peanut Butter",
+                        quantity: "2"
+                      }
+
+                    ];
+
+      var boughtList = [];
+
+      service.buyItem = function(itemIndex) {
+          boughtList.push(buyList[itemIndex]);
+          buyList.splice(itemIndex, 1); // removes item from toBuyItems
+      };
+
+      service.getAvailableItems = function() {
+          return buyList;
+      };
+
+      service.getBoughtItems = function() {
+          return boughtList;
+      };
+    }
 
 })();

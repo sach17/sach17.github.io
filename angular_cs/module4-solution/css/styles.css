@@ -1,0 +1,28 @@
+body {
+  font-size: 1.2em;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  display: none;
+}
+
+.loading-icon {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+}
+
+.btn {
+  width: 210px;
+  margin-top: 30px;
+  padding-top: 70px;
+  padding-bottom: 20px;
+}
+
+.left{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+

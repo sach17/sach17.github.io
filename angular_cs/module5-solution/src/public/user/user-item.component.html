@@ -1,0 +1,19 @@
+<div class="container">
+  <h3>User's Favourite item details :</h3>
+  <div class="menu-item-tile col-lg-12 col-md-12 col-sm-12">  
+
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="menu-item-photo">
+          <div>{{$ctrl.userItem.short_name}}</div>
+          <img class="img-responsive" width="300" height="200" ng-src="{{$ctrl.userItem.ApiPath;}}/images/{{$ctrl.userItem.short_name}}.jpg" alt="{{$ctrl.userItem.name}}">
+        </div>
+        <div class="menu-item-price">{{$ctrl.userItem.price_small | currency}}<span> {{$ctrl.userItem.small_portion_name}}</span> {{$ctrl.userItem.price_large | currency}} <span>{{$ctrl.userItem.large_portion_name}}</span></div>
+      </div>
+      <div class="menu-item-description col-lg-8 col-md-8 col-sm-8">
+        <h3 class="menu-item-title">{{$ctrl.userItem.name}}</h3>
+        <p class="menu-item-details">{{$ctrl.userItem.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>

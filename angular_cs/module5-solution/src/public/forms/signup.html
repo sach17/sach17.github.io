@@ -50,9 +50,7 @@
                 <div class="form-group">
                     <label for="menuShortName" class="col-sm-3 control-label">Favorite Item's Short Name</label>
                     <div class="col-sm-9">
-                        <input type="text" name="menuShortName" id="menuShortName" placeholder="Enter short name of your favorite dish" class="form-control" ng-model="signupCtrl.menuShortName" autofocus><div id="info" ng-if="signupCtrl.completed==false">
-	       <center><span class="fail">{{ signupCtrl.message }}</span></center>
-	    </div>
+                        <input type="text" name="menuShortName" id="menuShortName" placeholder="Enter short name of your favorite dish" class="form-control" ng-model="signupCtrl.menuShortName" autofocus><span class="label label-danger" ng-if="signupCtrl.completed==false">{{ signupCtrl.message }}</span>
                         <span class="label label-danger" ng-if="signupForm.menuShortName.$invalid && 	signupForm.menuShortName.$touched">
                         	Menu Number (short name) is required.
 	          			</span>

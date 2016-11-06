@@ -1,7 +1,4 @@
 <div class="container">
-		<div id="info" ng-if="signupCtrl.completed==false">
-	       <center><span class="fail">{{ signupCtrl.message }}</span></center>
-	    </div>
 
 	    <div id="info" ng-if="signupCtrl.completed==true">
 	       <center><span class="success">{{ signupCtrl.message }}</span></center>
@@ -53,7 +50,9 @@
                 <div class="form-group">
                     <label for="menuShortName" class="col-sm-3 control-label">Favorite Item's Short Name</label>
                     <div class="col-sm-9">
-                        <input type="text" name="menuShortName" id="menuShortName" placeholder="Enter short name of your favorite dish" class="form-control" ng-model="signupCtrl.menuShortName" autofocus>
+                        <input type="text" name="menuShortName" id="menuShortName" placeholder="Enter short name of your favorite dish" class="form-control" ng-model="signupCtrl.menuShortName" autofocus><div id="info" ng-if="signupCtrl.completed==false">
+	       <center><span class="fail">{{ signupCtrl.message }}</span></center>
+	    </div>
                         <span class="label label-danger" ng-if="signupForm.menuShortName.$invalid && 	signupForm.menuShortName.$touched">
                         	Menu Number (short name) is required.
 	          			</span>
@@ -62,7 +61,7 @@
                  <!-- /.form-group -->
                 <div class="form-group">
                     <div class="col-lg-4 col-md-4 col-sm-4 col-lg-offset-5 col-md-offset-5 col-sm-offset-5">
-                        <button class="btn btn-primary btn-block" ng-disabled="signupForm.$invalid" ng-click="signupCtrl.submit();signupForm.$setUntouched();">Register</button>
+                        <button class="btn btn-primary btn-block" ng-disabled="signupForm.$invalid" ng-click="signupCtrl.submit();signupForm.$setUntouched();">Sign Up</button>
                     </div>
                 </div>
 
